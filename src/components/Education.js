@@ -6,7 +6,7 @@ const Education = (props) => {
     
     return (
         <div>
-            <h2>{info.school}</h2>
+            <h2>{info.location}</h2>
             <div>{info.title}</div>
             <div>{info.date}</div>
         </div>
