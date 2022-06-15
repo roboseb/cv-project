@@ -1,32 +1,119 @@
 :root {
     --papyrus: rgb(243, 235, 220);
     --leafy: rgb(11, 109, 11);
+    --ball-rotation: 0deg;
+}
+
+@media only screen and (min-width: 1200px) {
+    #resume {
+        width: 900px !important;
+        border-left: 8px solid black;
+        border-right: 8px solid black;
+    }
+
+    #generalinfobox {
+        transform: translate(-25%) !important;
+    }
+}
+
+@font-face {
+    font-family: abode;
+    src: url('./fonts/abode.ttf');
+}
+
+@font-face {
+    font-family: abode-light;
+    src: url('./fonts/abode-light.ttf');
+}
+
+@font-face {
+    font-family: neogrotesk;
+    src: url('./fonts/NeogroteskPro-Regular.ttf');
 }
 
 body {
   margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: black;
 }
+
+
 
 #app {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100vh;
+    position: relative;
+
 }
 
-#app>:not(#resume) {
+#showeditbtn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    font-size: 3rem;
+    padding: 0px 15px 0px 15px;
+    margin: 10px;
+    background-color: rgba(75, 75, 75, 0.287);
+    backdrop-filter: blur(0px);
+    border: none;
+    color: black;
+    transition: all 0.4s;
+}
+
+#showeditbtn:hover {
+    color: white;
+    backdrop-filter: blur(10px);
+    background-color: rgba(75, 75, 75, 0.644);
+}
+
+#inputsbox {
     display: none;
+    grid-template-columns: auto auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: rgba(11, 109, 11, 0.644);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    color: white;
+}
+
+#inputsbox.shown {
+    display: grid;
+}
+
+#inputsbox>h2 {
+    grid-column: span 2;
+    text-align: center;
+    color: black;
+}
+
+
+#generalinputs {
+    display: flex;
+    flex-direction: column;
+}
+
+#editinputs {
+    display: flex;
+    flex-direction: column;
 }
 
 #resume {
+    box-sizing: border-box;
     width: 100vw;
+    height: 100vh;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 20% auto;
-    flex-grow: 1;
     background-color: var(--papyrus);
     position: relative;
     overflow: hidden;
+
 }
 
 #plant {
@@ -103,7 +190,6 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    width: 50vw;
 }   
 
 #education:after {
@@ -158,7 +244,6 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 50vw;
     align-items: flex-end;
 }
 
@@ -182,3 +267,173 @@ body {
 h1, h2, h3 {
     margin: 0;
 }
+
+#cryptoresume {
+    box-sizing: border-box;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1.5fr;
+    gap: 20px;
+    padding: 20px;
+    font-family: neogrotesk, sans-serif;
+    overflow: hidden;
+}
+
+
+
+#cryptoheader {
+
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    letter-spacing: 0rem;
+}
+
+#cryptoheader>h1 {
+    font-family: abode-light, sans-serif;
+    text-align: center;
+    font-size: 5rem;
+    color: white;
+    transition: all 0.8s;
+    font-weight: 400;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#cryptoheader:hover {
+    letter-spacing: 1.0rem;
+    
+}
+
+#headerapes {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transform: rotate(180deg);
+    filter: invert(0%);
+    transition: all 1s;
+}
+
+#headerapes:hover {
+    filter: invert(100%);
+}
+
+#headerapes>img {
+    height: 230px;
+    filter: opacity(0.3);
+}
+
+
+
+#cryptocontacts {
+    grid-column: span 2;
+    overflow: hidden;
+    position: relative;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#cryptocontacts:hover {
+    color: black !important;
+}
+
+#cryptocontacts>img {
+    position: absolute;
+    height: 220%;
+    left: 50%;
+    transform: translate(-50%, -0%) rotate(-90deg);
+    filter: opacity(0.3) contrast(100%);
+    transition: all 1s;
+    z-index: 0;
+}
+
+#cryptocontacts>img:hover {
+    height: 260%;
+    filter: opacity(1) contrast(10000%);
+}
+
+#cryptocontacts>div {
+    position: relative;
+    z-index: 3;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    pointer-events: none;
+}
+
+#cryptocontacts>div:nth-child(even) {
+    padding-left: 90px;
+
+}
+
+#cryptocontacts>div:nth-child(odd) {
+    align-self: flex-end;
+    padding-right: 90px;
+
+}
+
+#cryptoexperience {
+    background-color: goldenrod;
+    grid-row: span 2;
+}
+
+#cryptostats {
+    background-color: plum;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cryptostats>#statball {
+    background-color: #fff;
+    height: 90%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(var(--ball-rotation));
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.statitem {
+    position: absolute;
+    padding-left: 500px;
+    white-space: nowrap;
+}
+
+.statitem:nth-child(1) {
+ 
+}
+
+.statitem:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.statitem:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+.statitem:nth-child(4) {
+    transform: rotate(135deg);
+}
+
+.statitem:nth-child(5) {
+    transform: rotate(180deg);
+}
+
+#cryptoholdings {
+    background-color: grey;
+}
+

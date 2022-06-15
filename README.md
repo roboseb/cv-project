@@ -20,12 +20,18 @@ June 13th, 2022
 
     Finishing up the basic profesh resume styling, and looked at other TOP projects for inspiration. it reminded me of how basic the functionality of my project is at the moment. I think I'll be better off leaving it a little more basic this time so that I can put the things I've learned into the next one.
 
+June 14th, 2022
+
+    Wow, really struggling to just toggle between stylesheets here. Not sure why this feels so complicated right now.
+
+    I think my system for switching styling is the most ghetto thing I have ever created. And I haven't even started the actual stylsheet update yet. Hopefully in time I will actually learn how to just switch stylesheets in react, but I spent over an hour getting nowhere. So I'll try it my way for this project.
+
 ---To-Do---
 
 -Save both resumes as PDF
 DONE-Finish functionality on education section
 DONE-add experience section
--have option to show edit sections
--have edit sections show on click of hovered buttons
+DONE-have option to show edit sections
+DONE-have edit sections show on click of hovered buttons
 -Crypto bro styling
 -Button to switch between either styling
