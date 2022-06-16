@@ -18,18 +18,22 @@ class App extends Component {
                 'phone': '555-5454'
             },
             education: [{
-                location: 'Walter Murray',
+                location: "Saint Mary's",
                 title: 'Student',
                 date: '2011 - 2016'
             }, {
-                location: 'U of S',
+                location: 'U of A',
                 title: 'PHD',
                 date: '2017 - 2021'
             }],
             experience: [{
-                location: 'Goodfellow Inc.',
+                location: 'Blockbuster Inc.',
                 title: 'Forklift Operator',
                 date: '2020'
+            }, {
+                location: "McDonald's",
+                title: 'Cheese Executive Officer',
+                date: '2021-'
             }],
             editingSchool: false,
             lastSchool: null,
@@ -194,7 +198,7 @@ class App extends Component {
                 <div id='app'>
                     <button id='stylebtn'
                             onClick={this.toggleStyle}
-                            >click
+                            >click me
                     </button>
                     <button 
                         id='showeditbtn'
@@ -287,7 +291,7 @@ class App extends Component {
                 <div id='app'>
                     <button id='stylebtn'
                             onClick={this.toggleStyle}
-                            >click
+                            >click me
                     </button>
                     <button 
                         id='showeditbtn'

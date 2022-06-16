@@ -97,6 +97,13 @@ const CryptoResume = (props) => {
 
     return (
         <div id='cryptoresume'>
+            
+            <div id='dingbat1' className='dingbat'>U</div>
+        
+            <div id='dingbat2' className='dingbat'>T</div>
+        
+            
+
             <div id='cryptoheader'>
                 <div id='headerapes'>
                     <img src={ape1} alt=''></img>

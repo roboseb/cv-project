@@ -1,5 +1,37 @@
 # CVGenDUO
 
+---Features---
+
+-Enter your own experience and info to generate an ok-looking resume
+
+-A very nice plant that I drew in the corner and also a stickman
+
+-That button says, 'click me', you should click it!
+
+-BAM! Welcome to your crypto-bro resume! Now you have a plain resume for boring jobs, and your hype digital-only resume for the real work! Getting rug pulled!
+
+-All of the same info displayed as the regular resume, but now in a doper format.
+
+-Also generate extra contact info based on previously entered info
+
+-Hover over various elements and see what happens!
+
+-Scroll over the BAYC logo to cycle through your NFT collection!
+
+-Hover over bored ape tabs to view their art
+
+-Hover over the education/experience section, and it'll zoom in to reveal it was an animated pattern of ape skulls!
+
+-You can edit your info in either display mode
+
+-Hypebeast nezuko stolen from deviantart (hellhound0101)
+
+-Lots of assets stolen from bored ape yacht club (lol most are altered anyway, get funged brah)
+
+-Don't to keep an eye on the graph of your portfolio value, sure, it's going down, but watch it flip itself and the profits grow!
+
+-Black and red again. Not sure what happened, but I'm on a serious black and red kick.
+
 ---Devlog---
 
 June 12th, 2022
@@ -24,9 +56,7 @@ June 14th, 2022
 
     Wow, really struggling to just toggle between stylesheets here. Not sure why this feels so complicated right now.
 
-    I think my system for switching styling is the most ghetto thing I have ever created. And I haven't even started the actual stylsheet update yet. Hopefully in time I will actually learn how to just switch stylesheets in react, but I spent over an hour getting nowhere. So I'll try it my way for this project.
-
-June 15th, 2022
+    I think my system for switching styling is the most ghetto thing I have ever created. And I haven't even started the actual stylsheet update yet. Hopefullutton should submit your form and display the value of your input fields in HTML elements. The edit button should add back (display) the input fields, with the previously displayed information as values. In those input fields, you should be able to edit and resubmit the content. You’re going to mak
 
     Yep, doing it my way at least got the job done. Now I have a button that switches styiling to a setup I think looks pretty cool. Looks like today will be the last day, meaning I'm one day over my estimate as usual, which is fine. Getting closer to sticking to timeframes. With this in particular, I am still learning react, and I think that's as good an excuse as any for the extra time taken.
 
@@ -36,13 +66,20 @@ June 15th, 2022
 
     These past logs have been getting pretty rambly, but fuck you it's my README and no one else will see this until I start getting rejected from job applications. The way the site looks and functions now is pretty close to the style I would likely use on my own personal site. Probably not in terms of colour and theming necessarily, but the layout and interactivity is definitely something I like.
 
+June 16th, 2022
+
+    Bleh. I'm gonna skip exporting to PDF. Wasn't in the project spec and the whole joke is that this is really a place to convert your resume into a fake crypto bro resume. Whatever, I'm happy with it as is, type to learn more react nonsense.
+
 ---To-Do---
 
--Save both resumes as PDF
+CANCEL-Save both resumes as PDF
 DONE-Finish functionality on education section
 DONE-add experience section
 DONE-have option to show edit sections
 DONE-have edit sections show on click of hovered buttons
--Crypto bro styling
--Button to switch between either styling
--style experience buttons
+DONE-Crypto bro styling
+DONE-Button to switch between either styling
+DONE-style experience buttons
+DONE-Dingbats
+DONE-Change default info to not dox myself
+DONE-Media Query desktop on crypto bro section
