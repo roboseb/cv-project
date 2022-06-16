@@ -382,20 +382,15 @@ h1, h2, h3 {
 
 }
 
-#cryptoexperience {
-    background-color: goldenrod;
-    grid-row: span 2;
-}
-
 #cryptostats {
-    background-color: plum;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: black;
+    z-index: 2;
 }
 
 #cryptostats>#statball {
-    background-color: #fff;
     height: 90%;
     aspect-ratio: 1 / 1;
     border-radius: 100%;
@@ -403,14 +398,31 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     transform: rotate(var(--ball-rotation));
-    transition: transform 0.3s;
+    transition: all 0.3s;
     position: relative;
+}
+
+#statball>img {
+    height: 400px;
+    position: absolute;
+    z-index: 2;
+    transition: all 0.4s;
+    filter: opacity(1);
+}
+
+#statball>img:hover {
+    height: 200px;
+    filter: opacity(0.6);
 }
 
 .statitem {
     position: absolute;
-    padding-left: 500px;
+    padding-left: 100px;
     white-space: nowrap;
+    transition: all 0.3s;
+    color: red;
+    font-size: 1.5rem;
+    pointer-events: none;
 }
 
 .statitem:nth-child(1) {
@@ -433,7 +445,146 @@ h1, h2, h3 {
     transform: rotate(180deg);
 }
 
-#cryptoholdings {
-    background-color: grey;
+#statball>.statitem.focused {
+    font-size: 2.3rem;
+    color: white;
+    padding-left: 700px;
 }
 
+#cryptoholdings {
+    position: relative;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow: hidden;
+}
+
+#cryptoholdings>img {
+    width: 120%;
+    filter: brightness(0.4) contrast(200%);
+    position: absolute;
+    z-index: 0;
+    margin-bottom: -100%;
+    transition: all 0.4s;
+    border-top: 8px solid white;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#cryptoholdings>img:nth-child(1) {
+    top: 0;
+}
+
+#cryptoholdings>img:nth-child(2) {
+    top: 20%;
+}
+
+#cryptoholdings>img:nth-child(3) {
+    top: 40%;
+}
+
+#cryptoholdings>img:nth-child(4) {
+    top: 60%;
+}
+
+#cryptoholdings>img:nth-child(5) {
+    top: 80%;
+}
+
+#cryptoholdings>img:hover {
+    top: 0;
+    z-index: 3;
+    transform: translate(-50%);
+    filter: brightness(0.8) contrast(100%);
+}
+
+#cryptoexperience {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background-color: transparent;
+    padding: 20px;
+    background-image: url('./images/skullani.gif');
+    background-size: 5px;
+    color: white;
+    background-position: center;
+    transition: all 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+#cryptoexperience:hover {
+    background-size: 80px;
+}
+
+#cryptoedu, #cryptoexp {
+
+    align-items: flex-start;
+}
+
+.cryptoexpitem, .cryptoeduitem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 20px;
+    border-left: 5px solid black;
+    padding-left: 5px;
+    
+}
+
+.cryptoexpitem:nth-child(2), .cryptoeduitem:nth-child(2) {
+    border-radius: 5px 0 0 0;
+}
+
+.cryptoexpitem:last-child, .cryptoeduitem:last-child {
+    border-radius: 0 0 0 10px;
+}
+
+.cryptoexpitem>div>div, .cryptoeduitem>div>div {
+    margin-left: 20px;
+    border-left: 5px solid black;
+    padding-left: 15px;
+    font-size: 1rem;
+}
+
+.cryptoexpitem>div>div:nth-child(2), .cryptoeduitem>div>div:nth-child(2) {
+    border-radius: 5px 0 0 0px;
+
+} 
+
+.cryptoexpitem>div>div:last-child, .cryptoeduitem>div>div:last-child {
+    border-radius: 0px 0 0 10px;
+
+} 
+
+#cryptoexp>h1, #cryptoedu>h1 {
+    font-family: abode-light, sans-serif;
+    font-size: 3rem;
+} 
+
+.cryptoexpitem>button, .cryptoeduitem>button {
+    display: none;
+}
+
+.cryptoexpitem>*:not(button), .cryptoeduitem>*:not(button) {
+    pointer-events: none;
+}
+
+#cryptoexperience>img {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 120%;
+    mix-blend-mode: multiply;
+    animation: makeprofit 23.64s infinite;
+}
+
+@keyframes makeprofit {
+    0% {transform: scaleY(100%);}
+    40% {transform: scaleY(100%);}
+    50% {transform: scaleY(-100%);}
+    90% {transform: scaleY(-100%);}
+    100% {transform: scaleY(100%);}
+}

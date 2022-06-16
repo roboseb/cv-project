@@ -26,6 +26,16 @@ June 14th, 2022
 
     I think my system for switching styling is the most ghetto thing I have ever created. And I haven't even started the actual stylsheet update yet. Hopefully in time I will actually learn how to just switch stylesheets in react, but I spent over an hour getting nowhere. So I'll try it my way for this project.
 
+June 15th, 2022
+
+    Yep, doing it my way at least got the job done. Now I have a button that switches styiling to a setup I think looks pretty cool. Looks like today will be the last day, meaning I'm one day over my estimate as usual, which is fine. Getting closer to sticking to timeframes. With this in particular, I am still learning react, and I think that's as good an excuse as any for the extra time taken.
+
+    God damn I hate CSS when it's giving me shit. But today, I somehow was able to quickly learn to create GIFs in gimp which is easy as hell, and then implement the gif as a repeating pattern used as a background image of an element. It starts super small, so it just looks like a grid of tiny pixels flashing two different shades of red. When you hover over it, it zooms way in and you can see the little ape skulls animating open and shut. Looks dope as hell to me. Combined with the looping gif of Hypebeast Nezuko, the gifs can add a lot while not being tacky or distracting. 
+
+    Man, almost two straight days spent just styling the crypto page. Looks absolutely baller now, with only some dingbats left to add. I actually cannot believe how happy I am with the experience section on the crypto page. It looks insane. The fonts and colours are nice, plus I added some border-lefts that are kinda dynamic based on the info you add. Then there are the skulls I mentioned before. And I wasn't sure how I wanted to do it, but I succesfully added a simple line representing a graph that draws itself on the skulls. Looked stupid looping back to the start, and it also had some other issues so I threw it into some online gif editor. With one line of css and a half dozen re-downloads later, it looks simple but fun. The online editor let me loop the gif back to the start, which looks real neat. The editor also gave me the length of the gif, which I was able to use with keyframes to have the graph invert vertically every playthrough, creating "profit"!
+
+    These past logs have been getting pretty rambly, but fuck you it's my README and no one else will see this until I start getting rejected from job applications. The way the site looks and functions now is pretty close to the style I would likely use on my own personal site. Probably not in terms of colour and theming necessarily, but the layout and interactivity is definitely something I like.
+
 ---To-Do---
 
 -Save both resumes as PDF
@@ -35,3 +45,4 @@ DONE-have option to show edit sections
 DONE-have edit sections show on click of hovered buttons
 -Crypto bro styling
 -Button to switch between either styling
+-style experience buttons
