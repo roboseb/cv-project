@@ -1,64 +1,56 @@
 import { getByTitle } from "@testing-library/dom";
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import uniqid from "uniqid";
 import Resume from "./Resume";
 import CryptoResume from "./CryptoResume";
 import '../index.css';
 
 
+const App = () => {
 
+    const [general, setGeneral] = useState({
+        'name': 'Seb April',
+        'email': 'seb@hotmail.com',
+        'phone': '555-5454'
+    });
 
-class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            general: {
-                'name': 'Seb April',
-                'email': 'seb@hotmail.com',
-                'phone': '555-5454'
-            },
-            education: [{
-                location: "Saint Mary's",
-                title: 'Student',
-                date: '2011 - 2016'
-            }, {
-                location: 'U of A',
-                title: 'PHD',
-                date: '2017 - 2021'
-            }],
-            experience: [{
-                location: 'Blockbuster Inc.',
-                title: 'Forklift Operator',
-                date: '2020'
-            }, {
-                location: "McDonald's",
-                title: 'Cheese Executive Officer',
-                date: '2021-'
-            }],
-            editingSchool: false,
-            lastSchool: null,
-            lastCategory: null,
-            modeCategory: 'education',
-            style: 'professional'
-        }
+    const [education, setEducation] = useState([{
+        location: "Saint Mary's",
+        title: 'Student',
+        date: '2011 - 2016'
+    }, {
+        location: 'U of A',
+        title: 'PHD',
+        date: '2017 - 2021'
+    }]);
 
-        this.addSchool = this.addSchool.bind(this);
-        this.startEditingSchool = this.startEditingSchool.bind(this);
-        this.updateSchool = this.updateSchool.bind(this);
-        this.toggleEditing = this.toggleEditing.bind(this);
-    }
+    const [experience, setExperience] = useState([{
+        location: 'Blockbuster Inc.',
+        title: 'Forklift Operator',
+        date: '2020'
+    }, {
+        location: "McDonald's",
+        title: 'Cheese Executive Officer',
+        date: '2021-'
+    }]);
+
+    const [editing, setEditing] = useState(false);
+    const [lastSchool, setLastSchool] = useState(null);
+    const [lastCategory, setLastCategory] = useState(null);
+    const [modeCategory, setModeCategory] = useState('education');
+    const [style, setStyle] = useState('professional');
 
     //Update state directly from input.
-    handleChange = (e) => {
-        let tempState = this.state;
+    const handleChange = (e) => {
+        let tempState = general;
         
-        tempState['general'][e.target.id] = e.target.value;
-        this.setState(tempState);
-
+        tempState[e.target.id] = e.target.value;
+        setGeneral(tempState);
+        console.log(general);
     };
 
     //Add school to state.
-    addSchool = () => {
+    const addSchool = () => {
         const schoolBtn = document.getElementById('schoolbtn');
         schoolBtn.innerText = `Add ${this.state.modeCategory}`;
 
@@ -83,7 +75,7 @@ class App extends Component {
     }
 
     //Remove school from DOM and from state.
-    removeSchool = (location) => {
+    const removeSchool = (location) => {
         
 
         let tempState = this.state;
@@ -109,7 +101,7 @@ class App extends Component {
     }
 
     //Set the school inputs to editing mode and fill them with relevant data.
-    startEditingSchool = (data) => {
+    const startEditingSchool = (data) => {
         this.toggleEditing();
 
         //Set editing mode on.
@@ -140,7 +132,7 @@ class App extends Component {
 
     }
 
-    updateSchool = () => {
+    const updateSchool = () => {
         let tempState = this.state;
 
         //Use the current input values to update state.
@@ -174,7 +166,7 @@ class App extends Component {
     }
 
     //Toggle edit panel visibility.
-    toggleEditing = () => {
+    const toggleEditing = () => {
         const inputsBox = document.getElementById('inputsbox');
         if (inputsBox.classList.contains('shown')) {
             inputsBox.classList.remove('shown');
@@ -183,7 +175,7 @@ class App extends Component {
         }
     }
 
-    toggleStyle = () => {
+    const toggleStyle = () => {
         if (this.state.style === 'professional') {
             this.setState({style: 'cryptoBro'});
         } else {
@@ -191,195 +183,195 @@ class App extends Component {
         }
     }
 
-    render() {
-        if (this.state.style === 'professional') {
-            return (
 
-                <div id='app'>
-                    <button id='stylebtn'
-                            onClick={this.toggleStyle}
-                            >click me
-                    </button>
-                    <button 
-                        id='showeditbtn'
-                        onClick={this.toggleEditing}
-                        >EDIT
-                    </button>
-                    <div id='inputsbox'>
-                        <h2>Edit</h2>
-                        <div id='generalinputs'>
-                            <label htmlFor='name'>Name</label>
-                            <input
-                                onChange={this.handleChange}
-                                id='name'
-                                type='text'
-                            />
+    if (style === 'professional') {
+        return (
 
-                            <label htmlFor='email'>Email</label>
-                            <input
-                                onChange={this.handleChange}
-                                id='email'
-                                type='text'
-                            />
+            <div id='app'>
+                <button id='stylebtn'
+                        onClick={toggleStyle}
+                        >click me
+                </button>
+                <button 
+                    id='showeditbtn'
+                    onClick={toggleEditing}
+                    >EDIT
+                </button>
+                <div id='inputsbox'>
+                    <h2>Edit</h2>
+                    <div id='generalinputs'>
+                        <label htmlFor='name'>Name</label>
+                        <input
+                            onChange={handleChange}
+                            id='name'
+                            type='text'
+                        />
 
-                            <label htmlFor='phone'>Phone</label>
-                            <input
-                                onChange={this.handleChange}
-                                id='phone'
-                                type='text'
-                            />
-                        </div>
-                        <div id='editinputs'>
-                            <label htmlFor='school'>School</label>
-                            <input
+                        <label htmlFor='email'>Email</label>
+                        <input
+                            onChange={handleChange}
+                            id='email'
+                            type='text'
+                        />
 
-                                id='school'
-                                type='text'
-                            />
-
-                            <label htmlFor='title'>Title</label>
-                            <input
-
-                                id='title'
-                                type='text'
-                            />
-
-                            <label htmlFor='date'>Date</label>
-                            <input
-
-                                id='date'
-                                type='text'
-                            />
-                            <button
-                                id='schoolbtn'
-                                onClick={() => {
-                                    if (this.state.editingSchool === false) {
-                                        this.addSchool();
-                                    } else {
-                                        this.updateSchool();
-                                    }
-                                }}
-                            >Add School</button>
-                            <button
-                                id='modebtn'
-                                // Add click event for toggling what to add to resume.
-                                onClick={() => {
-                                    if (this.state.modeCategory === 'education') {
-                                        this.setState({ modeCategory: 'experience' });
-                                        document.getElementById('schoolbtn').innerText = 'Add Experience';
-                                        document.querySelector('label[for="school"]').innerText = 'Employer';
-                                    } else {
-                                        this.setState({ modeCategory: 'education' });
-                                        document.getElementById('schoolbtn').innerText = 'Add Education';
-                                        document.querySelector('label[for="school"]').innerText = 'School';
-                                    }
-                                }}
-                            >Mode</button>
-                        </div>
+                        <label htmlFor='phone'>Phone</label>
+                        <input
+                            onChange={handleChange}
+                            id='phone'
+                            type='text'
+                        />
                     </div>
-                    <Resume info={this.state}
-                            removeSchool={this.removeSchool}
-                            startEditingSchool={this.startEditingSchool}
-                            toggleEditing={this.toggleEditing}
-                    />
-                    
-                </div>
-            );
-        } else {
-            return (
+                    <div id='editinputs'>
+                        <label htmlFor='school'>School</label>
+                        <input
 
-                <div id='app'>
-                    <button id='stylebtn'
-                            onClick={this.toggleStyle}
-                            >click me
-                    </button>
-                    <button 
-                        id='showeditbtn'
-                        onClick={this.toggleEditing}
-                        >EDIT
-                    </button>
-                    <div id='inputsbox'>
-                        <h2>Edit</h2>
-                        <div id='generalinputs'>
-                            <label htmlFor='name'>Name</label>
-                            <input
-                                onChange={this.handleChange}
-                                id='name'
-                                type='text'
-                            />
+                            id='school'
+                            type='text'
+                        />
 
-                            <label htmlFor='email'>Email</label>
-                            <input
-                                onChange={this.handleChange}
-                                id='email'
-                                type='text'
-                            />
+                        <label htmlFor='title'>Title</label>
+                        <input
 
-                            <label htmlFor='phone'>Phone</label>
-                            <input
-                                onChange={this.handleChange}
-                                id='phone'
-                                type='text'
-                            />
-                        </div>
-                        <div id='editinputs'>
-                            <label htmlFor='school'>School</label>
-                            <input
+                            id='title'
+                            type='text'
+                        />
 
-                                id='school'
-                                type='text'
-                            />
+                        <label htmlFor='date'>Date</label>
+                        <input
 
-                            <label htmlFor='title'>Title</label>
-                            <input
-
-                                id='title'
-                                type='text'
-                            />
-
-                            <label htmlFor='date'>Date</label>
-                            <input
-
-                                id='date'
-                                type='text'
-                            />
-                            <button
-                                id='schoolbtn'
-                                onClick={() => {
-                                    if (this.state.editingSchool === false) {
-                                        this.addSchool();
-                                    } else {
-                                        this.updateSchool();
-                                    }
-                                }}
-                            >Add School</button>
-                            <button
-                                id='modebtn'
-                                // Add click event for toggling what to add to resume.
-                                onClick={() => {
-                                    if (this.state.modeCategory === 'education') {
-                                        this.setState({ modeCategory: 'experience' });
-                                        document.getElementById('schoolbtn').innerText = 'Add Experience';
-                                        document.querySelector('label[for="school"]').innerText = 'Employer';
-                                    } else {
-                                        this.setState({ modeCategory: 'education' });
-                                        document.getElementById('schoolbtn').innerText = 'Add Education';
-                                        document.querySelector('label[for="school"]').innerText = 'School';
-                                    }
-                                }}
-                            >Mode</button>
-                        </div>
+                            id='date'
+                            type='text'
+                        />
+                        <button
+                            id='schoolbtn'
+                            onClick={() => {
+                                if (editing === false) {
+                                    addSchool();
+                                } else {
+                                    updateSchool();
+                                }
+                            }}
+                        >Add School</button>
+                        <button
+                            id='modebtn'
+                            // Add click event for toggling what to add to resume.
+                            onClick={() => {
+                                if (modeCategory === 'education') {
+                                    setModeCategory('experience');
+                                    document.getElementById('schoolbtn').innerText = 'Add Experience';
+                                    document.querySelector('label[for="school"]').innerText = 'Employer';
+                                } else {
+                                    setModeCategory('education');
+                                    document.getElementById('schoolbtn').innerText = 'Add Education';
+                                    document.querySelector('label[for="school"]').innerText = 'School';
+                                }
+                            }}
+                        >Mode</button>
                     </div>
-                    <CryptoResume info={this.state}
-                            removeSchool={this.removeSchool}
-                            startEditingSchool={this.startEditingSchool}
-                            toggleEditing={this.toggleEditing}
-                    />
-                    
                 </div>
-            );
-        }
+                <Resume info={{general, education, experience}}
+                        removeSchool={removeSchool}
+                        startEditingSchool={startEditingSchool}
+                        toggleEditing={toggleEditing}
+                />
+                
+            </div>
+        );
+    } else {
+        return (
+            <div id='app'>
+                <button id='stylebtn'
+                        onClick={toggleStyle}
+                        >click me
+                </button>
+                <button 
+                    id='showeditbtn'
+                    onClick={toggleEditing}
+                    >EDIT
+                </button>
+                <div id='inputsbox'>
+                    <h2>Edit</h2>
+                    <div id='generalinputs'>
+                        <label htmlFor='name'>Name</label>
+                        <input
+                            onChange={handleChange}
+                            id='name'
+                            type='text'
+                        />
+
+                        <label htmlFor='email'>Email</label>
+                        <input
+                            onChange={handleChange}
+                            id='email'
+                            type='text'
+                        />
+
+                        <label htmlFor='phone'>Phone</label>
+                        <input
+                            onChange={handleChange}
+                            id='phone'
+                            type='text'
+                        />
+                    </div>
+                    <div id='editinputs'>
+                        <label htmlFor='school'>School</label>
+                        <input
+
+                            id='school'
+                            type='text'
+                        />
+
+                        <label htmlFor='title'>Title</label>
+                        <input
+
+                            id='title'
+                            type='text'
+                        />
+
+                        <label htmlFor='date'>Date</label>
+                        <input
+
+                            id='date'
+                            type='text'
+                        />
+                        <button
+                            id='schoolbtn'
+                            onClick={() => {
+                                if (editing === false) {
+                                    addSchool();
+                                } else {
+                                    updateSchool();
+                                }
+                            }}
+                        >Add School</button>
+                        <button
+                            id='modebtn'
+                            // Add click event for toggling what to add to resume.
+                            onClick={() => {
+                                if (modeCategory === 'education') {
+                                    setModeCategory('experience');
+                                    document.getElementById('schoolbtn').innerText = 'Add Experience';
+                                    document.querySelector('label[for="school"]').innerText = 'Employer';
+                                } else {
+                                    setModeCategory('education');
+                                    document.getElementById('schoolbtn').innerText = 'Add Education';
+                                    document.querySelector('label[for="school"]').innerText = 'School';
+                                }
+                            }}
+                        >Mode</button>
+                    </div>
+                </div>
+                <CryptoResume info={general, education, experience}
+                        removeSchool={removeSchool}
+                        startEditingSchool={startEditingSchool}
+                        toggleEditing={toggleEditing}
+                />
+                
+            </div>
+
+        );
     }
+
 }
 
 export default App;
