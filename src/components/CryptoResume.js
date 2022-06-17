@@ -15,7 +15,6 @@ import colApe5 from '../images/apecollection5.png';
 import chartGif from '../images/newchart.gif'
 
 const CryptoResume = (props) => {
-    const {general, education, experience} = props.info;
 
     const stats = ['5 Bored Apes 🐵', '7 CryptoKitties 🐱', '5 CryptoPunks 😎', '5 Pudgy Penguins 🐧', '8 Times Rugpulled'];
     
@@ -76,8 +75,6 @@ const CryptoResume = (props) => {
             }
       
         });
-
-        //console.log(statIndex);
         
         //Update statball rotation in css.
         let root = document.documentElement;
@@ -93,7 +90,7 @@ const CryptoResume = (props) => {
 
 
     //Take the first part of the user email for later use.
-    const nickname = general.email.split('@')[0];
+    const nickname = props.info.general.email.split('@')[0];
 
     return (
         <div id='cryptoresume'>
@@ -115,9 +112,9 @@ const CryptoResume = (props) => {
             </div>
             <div id='cryptocontacts'>
                 <img src={nezuko} alt=''></img>
-                <div>NAME ⸸ {general.name}</div>
-                <div>EMAIL ⸸ {general.email}</div>
-                <div>PHONE ⸸ {general.phone}</div>
+                <div>NAME ⸸ {props.info.general.name}</div>
+                <div>EMAIL ⸸ {props.info.general.email}</div>
+                <div>PHONE ⸸ {props.info.general.phone}</div>
                 <div>TWITTER ⸸ @{nickname}</div>
                 <div>SNAP ⸸ @{nickname}97</div>
                 <div>TIKTOK ⸸ @crypto{nickname}</div>
@@ -128,7 +125,7 @@ const CryptoResume = (props) => {
                     <h1>Education</h1>
 
                     {/* Display each school and its info. */}
-                    {education.map((item, index) => {
+                    {props.info.education.map((item, index) => {
                         return <div 
                                     className='cryptoeduitem' 
                                     key={uniqid()}
@@ -136,7 +133,7 @@ const CryptoResume = (props) => {
                                     onMouseLeave={hideButtons}
                                 >
 
-                                <Education info={education[index]}/>
+                                <Education info={props.info.education[index]}/>
                                 <button 
                                     onClick={() => {props.removeSchool(item.location);
                                     }}>
@@ -156,7 +153,7 @@ const CryptoResume = (props) => {
                     <h1>Experience</h1>
 
                     {/* Display each work experience and its info. */}
-                    {experience.map((item, index) => {
+                    {props.info.experience.map((item, index) => {
                         return <div 
                                     className='cryptoexpitem' 
                                     key={uniqid()}
@@ -164,7 +161,7 @@ const CryptoResume = (props) => {
                                     onMouseLeave={hideButtons}
                                 >
 
-                            <Education info={experience[index]} />
+                            <Education info={props.info.experience[index]} />
                             <button
                                 onClick={() => {
                                     props.removeSchool(item.location);

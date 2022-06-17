@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Education from "./Education";
 import uniqid from "uniqid";
 import manIcon from '../images/manicon.png';
 import plantImg from '../images/leaf.png';
 
 const Resume = (props) => {
-    const {general, education, experience} = props.info;
 
     const showButtons = (e) => {
         const buttons = Array.from(e.target.querySelectorAll('button'));
@@ -25,13 +24,14 @@ const Resume = (props) => {
         <div id='resume'>
             <img id='plant' src={plantImg} alt='A painted succulent'></img>
             <div id='general'>
+                
                 <div id='iconbox'>
                     <img src={manIcon} alt='Your profesh resume'></img>
                 </div>
                 <div id='generalinfobox'>
-                    <h2>{general.name}</h2>
-                    <span>{general.email}</span>
-                    <span id='phonedisplay'><strong>{general.phone}</strong></span>
+                    <h2>{props.info.general.name}</h2>
+                    <span>{props.info.general.email}</span>
+                    <span id='phonedisplay'><strong>{props.info.general.phone}</strong></span>
                 </div>
 
             </div>
@@ -39,7 +39,7 @@ const Resume = (props) => {
                 <h1>Education</h1>
 
                 {/* Display each school and its info. */}
-                {education.map((item, index) => {
+                {props.info.education.map((item, index) => {
                     return <div 
                                 className='educationitem' 
                                 key={uniqid()}
@@ -57,7 +57,7 @@ const Resume = (props) => {
                                 }}>
                                 Edit Schooling
                             </button>
-                            <Education info={education[index]}/>
+                            <Education info={props.info.education[index]}/>
                         </div>
                 })}
             </div>
@@ -66,7 +66,7 @@ const Resume = (props) => {
                 <h1>Experience</h1>
 
                 {/* Display each work experience and its info. */}
-                {experience.map((item, index) => {
+                {props.info.experience.map((item, index) => {
                     return <div 
                                 className='experienceitem' 
                                 key={uniqid()}
@@ -86,7 +86,7 @@ const Resume = (props) => {
                             }}>
                             Edit Experience
                         </button>
-                        <Education info={experience[index]} />
+                        <Education info={props.info.experience[index]} />
                     </div>
                 })}
             </div>

@@ -9,9 +9,9 @@ import '../index.css';
 const App = () => {
 
     const [general, setGeneral] = useState({
-        'name': 'Seb April',
-        'email': 'seb@hotmail.com',
-        'phone': '555-5454'
+        name: 'Seb April',
+        email: 'seb@hotmail.com',
+        phone: '555-5454'
     });
 
     const [education, setEducation] = useState([{
@@ -34,6 +34,7 @@ const App = () => {
         date: '2021-'
     }]);
 
+
     const [editing, setEditing] = useState(false);
     const [lastSchool, setLastSchool] = useState(null);
     const [lastCategory, setLastCategory] = useState(null);
@@ -42,33 +43,43 @@ const App = () => {
 
     //Update state directly from input.
     const handleChange = (e) => {
-        let tempState = general;
-        
-        tempState[e.target.id] = e.target.value;
-        setGeneral(tempState);
-        console.log(general);
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+
+        setGeneral({
+            name: name,
+            email: email,
+            phone: phone
+        });
     };
 
     //Add school to state.
     const addSchool = () => {
         const schoolBtn = document.getElementById('schoolbtn');
-        schoolBtn.innerText = `Add ${this.state.modeCategory}`;
+        schoolBtn.innerText = `Add ${modeCategory}`;
 
-        let tempState = this.state;
 
-        const school = document.getElementById('school');
+        const location = document.getElementById('school');
         const title = document.getElementById('title');
         const date = document.getElementById('date');
         
-        tempState[this.state.modeCategory].push({
-            location: school.value,
-            title: title.value,
-            date: date.value
-        });
-        this.setState(tempState);
+        if (modeCategory === 'education') {
+            setEducation(education.concat([{
+                location: location.value,
+                title: title.value,
+                date: date.value
+            }]));
+        } else if (modeCategory === 'experience') {
+            setExperience(experience.concat([{
+                location: location.value,
+                title: title.value,
+                date: date.value
+            }]));
+        }
 
         //Clear inputs.
-        school.value = '';
+        location.value = '';
         title.value = '';
         date.value = '';
 
@@ -76,48 +87,33 @@ const App = () => {
 
     //Remove school from DOM and from state.
     const removeSchool = (location) => {
-        
-
-        let tempState = this.state;
-
-        //If location is in education, remove it from state.
-        for (let i = 0; i < tempState['education'].length; i++) {
-      
-            if (tempState['education'][i] !== undefined &&
-                tempState['education'][i].location === location) {
-                delete tempState['education'][i];
-            }
-        }
-
-        //If location is in experience, remove it from state.
-        for (let i = 0; i < tempState['experience'].length; i++) {
-      
-            if (tempState['experience'][i] !== undefined &&
-                tempState['experience'][i].location === location) {
-                delete tempState['experience'][i];
-            }
-        }
-        this.setState(tempState);
+        setEducation(education.filter(item => item.location !== location));
+        setExperience(experience.filter(item => item.location !== location));
     }
 
     //Set the school inputs to editing mode and fill them with relevant data.
     const startEditingSchool = (data) => {
-        this.toggleEditing();
+
+        //Display the inputs box.
+        const inputsBox = document.getElementById('inputsbox');
+        if (!inputsBox.classList.contains('shown')) {
+            inputsBox.classList.add('shown');
+        }
 
         //Set editing mode on.
-        this.setState({editingSchool: true});
+        setEditing(true);
 
         const schoolBtn = document.getElementById('schoolbtn');
 
         //Set state for last index based on data was part of education or 
         //experience. Also update the innerText of the edit school button.
-        if (this.state.education.indexOf(data) !== -1) {
-            this.setState({lastSchool: this.state.education.indexOf(data)});
-            this.setState({lastCategory: 'education'});
+        if (education.indexOf(data) !== -1) {
+            setLastSchool(education.indexOf(data));
+            setLastCategory('education');
             schoolBtn.innerText = 'Edit School';
         } else {
-            this.setState({lastSchool: this.state.experience.indexOf(data)});
-            this.setState({lastCategory: 'experience'});
+            setLastSchool(experience.indexOf(data));
+            setLastCategory('experience');
             schoolBtn.innerText = 'Edit Experience';
         }
     
@@ -133,24 +129,47 @@ const App = () => {
     }
 
     const updateSchool = () => {
-        let tempState = this.state;
-
         //Use the current input values to update state.
         let school = document.getElementById('school');
         const title = document.getElementById('title');
         const date = document.getElementById('date');
 
-
-        //Update the school at the last index with the current input values.
-        tempState[this.state.lastCategory][this.state.lastSchool] = {
-            location: school.value,
-            title: title.value,
-            date: date.value
+        //Find the relevant school and update it if lastCategory is education.
+        if (lastCategory === 'education') {
+            setEducation(education.map(
+                (item, index) => {
+                    if (index === lastSchool) {
+                        return {
+                            location: school.value,
+                            title: title.value,
+                            date: date.value
+                        }
+                    } else {
+                        return item;
+                    }
+                }
+            ));
         }
 
-        //Update the state then turn off editing mode.
-        this.setState(tempState);
-        this.setState({editingSchool: false});
+        //Find the relevant experience and update it if lastCategory is experience.
+        if (lastCategory === 'experience') {
+            setExperience(experience.map(
+                (item, index) => {
+                    if (index === lastSchool) {
+                        return {
+                            location: school.value,
+                            title: title.value,
+                            date: date.value
+                        }
+                    } else {
+                        return item;
+                    }
+                }
+            ));
+        }
+
+        //Turn off editing mode.
+        setEditing(false);
 
         //Reset school inputs in DOM.
         school.value = '';
@@ -162,7 +181,7 @@ const App = () => {
         schoolBtn.innerText = 'Add School';
 
         document.querySelector('label[for="school"]').innerText = 'School';
-        this.setState({modeCategory: 'education'});
+        setModeCategory('education');
     }
 
     //Toggle edit panel visibility.
@@ -176,10 +195,10 @@ const App = () => {
     }
 
     const toggleStyle = () => {
-        if (this.state.style === 'professional') {
-            this.setState({style: 'cryptoBro'});
+        if (style === 'professional') {
+            setStyle('cryptoBro');
         } else {
-            this.setState({style: 'professional'});
+            setStyle('professional');
         }
     }
 
@@ -361,7 +380,7 @@ const App = () => {
                         >Mode</button>
                     </div>
                 </div>
-                <CryptoResume info={general, education, experience}
+                <CryptoResume info={{general, education, experience}}
                         removeSchool={removeSchool}
                         startEditingSchool={startEditingSchool}
                         toggleEditing={toggleEditing}

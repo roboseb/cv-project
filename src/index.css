@@ -647,6 +647,5 @@ button:hover {
 
 #stylebtn {
     position: fixed;
-    display: initial;
     z-index: 2;
 }
