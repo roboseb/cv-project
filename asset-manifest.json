@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/cv-project/static/css/main.c9c4a6c8.css",
+    "main.js": "/cv-project/static/js/main.72ead19f.js",
+    "static/media/nezuko-def.gif": "/cv-project/static/media/nezuko-def.fc839583aca281564abd.gif",
+    "static/media/graph.webp": "/cv-project/static/media/graph.4bf3e7b3a7faed82a128.webp",
+    "static/media/newchart.gif": "/cv-project/static/media/newchart.5b8a2f10252e54e76506.gif",
+    "static/media/NeogroteskPro-Regular.ttf": "/cv-project/static/media/NeogroteskPro-Regular.96a2b5d7bed403b4b4c8.ttf",
+    "static/media/ape1.png": "/cv-project/static/media/ape1.ae500f97202d6061990b.png",
+    "static/media/ape3.png": "/cv-project/static/media/ape3.eecb44b60b594401a474.png",
+    "static/media/leaf.png": "/cv-project/static/media/leaf.6f53175ab3e0a88d79ac.png",
+    "static/media/ape2.png": "/cv-project/static/media/ape2.58ebaf38061718dbb3ad.png",
+    "static/media/apecollection4.png": "/cv-project/static/media/apecollection4.e835a1dbd3b1d3fecfc0.png",
+    "static/media/apecollection3.png": "/cv-project/static/media/apecollection3.886e4a01b635a59d90d5.png",
+    "static/media/apecollection1.png": "/cv-project/static/media/apecollection1.b55cc21ba415c86d83bc.png",
+    "static/media/apecollection5.png": "/cv-project/static/media/apecollection5.d1ea10f163da75e7e9c3.png",
+    "static/media/apecollection2.png": "/cv-project/static/media/apecollection2.fa73c18a67e9d1cb3dbe.png",
+    "static/media/Floralia.ttf": "/cv-project/static/media/Floralia.e8cc2e699d0e6e96ff17.ttf",
+    "static/media/abode-light.ttf": "/cv-project/static/media/abode-light.18df3fa5a654f93816af.ttf",
+    "static/media/abode.ttf": "/cv-project/static/media/abode.4125b6f11530b93f3712.ttf",
+    "static/media/skullani.gif": "/cv-project/static/media/skullani.b2002167260c83148a91.gif",
+    "static/media/bayc-red.png": "/cv-project/static/media/bayc-red.b48a514045cd6ea80d39.png",
+    "index.html": "/cv-project/index.html",
+    "main.c9c4a6c8.css.map": "/cv-project/static/css/main.c9c4a6c8.css.map",
+    "main.72ead19f.js.map": "/cv-project/static/js/main.72ead19f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9c4a6c8.css",
+    "static/js/main.72ead19f.js"
+  ]
+}
